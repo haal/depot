@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :set_time
+
+  def set_time
+    @time = Time.current
+  end
+
   private
 
     def current_cart
