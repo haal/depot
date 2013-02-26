@@ -26,8 +26,4 @@ class Product < ActiveRecord::Base
    end
   end
 
-  def to_s
-    "#{@title} - #{@price}"
-  end
-  
 end

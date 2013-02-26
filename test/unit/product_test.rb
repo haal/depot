@@ -73,4 +73,16 @@ class ProductTest < ActiveSupport::TestCase
                  product.errors[:title].join('; ')
   end
 
+  test "add unique and duplicate products" do
+    unique_product_1 = Product.new(:title       => 'Unique book name',
+                                :description => products(:ruby).description, 
+                                :price       => products(:ruby).price, 
+                                :image_url   => products(:ruby).image_url)
+    duplicate_product_1 = products(:ruby)
+
+    assert unique_product_1.save, "Failed #{unique_product_1.title} because of #{unique_product_1.errors.messages}"
+    #error on save duplicate
+    # assert !duplicate_product_1.save, "Failed #{duplicate_product_1.title} because of #{duplicate_product_1.errors.messages}"
+  end
+
 end
