@@ -25,4 +25,9 @@ class Product < ActiveRecord::Base
     return false
    end
   end
+
+  def to_s
+    "#{@title} - #{@price}"
+  end
+  
 end
