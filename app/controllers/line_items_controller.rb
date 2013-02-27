@@ -89,4 +89,22 @@ class LineItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # POST /line_items/1/decrement
+  def decrement
+    @cart = current_cart
+    @line_item = @cart.line_items.find_by_id(params[:id])
+    @line_item.quantity -= 1
+
+    if @line_item.quantity == 0
+      @line_item.destroy
+    end
+
+    begin @line_item.update_attributes(params[:line_item])
+    rescue
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
 end
