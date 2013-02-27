@@ -6,7 +6,7 @@ class CartsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    get :index, :cart => @cart
     assert_response :success
     assert_not_nil assigns(:carts)
   end
