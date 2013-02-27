@@ -48,4 +48,16 @@ class LineItemsControllerTest < ActionController::TestCase
     # redirect to store url as cart is empty
     assert_redirected_to store_url
   end
+
+  test "should create line item via ajax" do
+    assert_difference('LineItem.count') do
+      xhr :post, :create, :product_id => products(:ruby).id
+    end
+
+    assert_response :success
+    # found why this selector is not working
+    # assert_select 'table'
+    # assert_select 'div.side div.cart table tbody tr.current_item td', /Programming Ruby 1.9/
+  end
+
 end
