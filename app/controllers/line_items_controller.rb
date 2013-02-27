@@ -80,7 +80,11 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      if current_cart.line_items.empty?
+        format.html { redirect_to store_url, :notice => 'Your cart is currently empty' }
+      else
+        format.html { redirect_to current_cart, :notice => 'Item removed' }
+      end
       format.json { head :no_content }
     end
   end
