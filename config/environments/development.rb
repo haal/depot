@@ -16,6 +16,17 @@ Depot::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.smtp_settings = {
+  :address => "smtp.prodavanca.com",
+  :port => 587,
+  :domain => "prodavanca.com",
+  :authentication => "plain", 
+  :user_name => "prodavanca@gmail.com", 
+  :password => "secret",
+  :enable_starttls_auto => true
+}
+
+
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
