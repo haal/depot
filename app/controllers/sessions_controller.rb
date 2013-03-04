@@ -5,11 +5,16 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	if user = User.authenticate(params[:name], params[:password])
+    #there is no users in db - allow crete on login
+    if User.count.zero?
+      user = User.create(:name => params[:name], :password => params[:password], :password_confirmation => params[:password])
+      session[:user_id] = user.id
+      redirect_to admin_url
+    #regular case
+  	elsif user = User.authenticate(params[:name], params[:password])
   		session[:user_id] = user.id
   		redirect_to admin_url
   	else
-      puts "Redirecting to #{login_url}"
   		redirect_to login_url, :alert => 'Invalid user/password combination'
   	end
   end
