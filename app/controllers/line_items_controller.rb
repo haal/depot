@@ -1,5 +1,5 @@
 class LineItemsController < ApplicationController
-  skip_before_filter :authorize, :only => :create
+  skip_before_filter :authorize
 
   # GET /line_items
   # GET /line_items.json
@@ -86,7 +86,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if current_cart.line_items.empty?
         format.html { redirect_to store_url, :notice => 'Your cart is currently empty' }
-        format.js
+        format.js { render :template => "line_items/decrement.js.erb" }
       else
         format.html { redirect_to current_cart, :notice => 'Item removed' }
         format.js { render :template => "line_items/decrement.js.erb" }
