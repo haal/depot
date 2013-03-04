@@ -3,6 +3,8 @@
 
 bs:
 
+  thanks: "Hvala na vašoj narudžbi"
+
   layouts:
     application:
       title: "ProdavAnca"
@@ -30,3 +32,34 @@ bs:
         separator: ","
         delimiter: "&nbsp;"
         format: "%n&nbsp;%u"
+
+  orders:
+    new: 
+      legend: "Unesite vaše podatke"
+    form:
+      name: "Ime"
+      address: "Adresa"
+      email: "E-mail"
+      pay_type: "Način plaćanja"
+      pay_prompt: "Odaberite način plaćanja"
+      submit: "Naruči"
+
+  activerecord:
+    models:
+      order: "Narudzba"
+    attributes:
+      order:
+        address: "Adresa"
+        name: "Ime"
+        email: "E-mail"
+        pay_type: "Način plaćanja"
+    errors:
+      messages:
+        inclusion: "nije sadržano u listi"
+        blank: "ne može biti prazno"
+  errors:
+    template:
+      body: "Postoje problemi sa sljedećim poljima: "
+      header:
+        one: "1 greška je uzrokovala nemogućnost spremanja %{model} "
+        other: "%{count} grešaka je uzrokovalo nemogućnost spremanje %{model}"
