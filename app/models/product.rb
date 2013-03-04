@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
 
-  attr_accessible :description, :image_url, :price, :title
+  attr_accessible :description, :image_url, :price, :title, :locale
 
   default_scope :order => 'title'
 
@@ -25,6 +25,10 @@ class Product < ActiveRecord::Base
     errors.add(:base, 'Line Items present')
     return false
    end
+  end
+
+  def self.find_product_for_sale
+    where(:locale => I18n.locale)
   end
 
 end

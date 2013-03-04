@@ -15,7 +15,7 @@ bs:
 
   store:
     index:
-      title_html: "Stvari na prodaju"
+      title_html: "Knjige na prodaju"
       add: "Dodaj u korpu"
 
   carts:

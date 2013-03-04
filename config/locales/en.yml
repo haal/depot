@@ -3,6 +3,8 @@
 
 en:
 
+  thanks: "Thank you for your order"
+
   layouts:
     application:
       title: "Pragmatic Bookshelf"
